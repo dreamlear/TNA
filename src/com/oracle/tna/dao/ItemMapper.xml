@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3.dtd">
+<mapper namespace="com.oracle.tna.dao.ItemMapper">
+
+	<select id = "select" resultType = "item">
+		select * from item
+	</select>
+	
+	<select id = "selectBysearch" parameterType="String" resultType = "item">
+		select * from item where question like #{search}
+	</select>
+	
+	<update id="updataQuestionbyId" parameterType="item" >
+		update item set question = #{question} where qid=#{qid}
+	</update>
+	
+	<update id="updataOptionAbyId" parameterType="item" >
+		update item set option_a = #{option_a} where qid=#{qid}
+	</update>
+	
+	<update id="updataOptionBbyId" parameterType="item" >
+		update item set option_b = #{option_b} where qid=#{qid}
+	</update>
+	
+	<update id="updataOptionCbyId" parameterType="item" >
+		update item set option_c = #{option_c} where qid=#{qid}
+	</update>
+	
+	<update id="updataOptionDbyId" parameterType="item" >
+		update item set option_d = #{option_d} where qid=#{qid}
+	</update>
+	
+	<update id="updataAnswerbyId" parameterType="item" >
+		update item set answer = #{answer}, type = #{type} where qid=#{qid}
+	</update>
+	
+	<delete id = "deletebyId" parameterType="int" >
+		delete from item where qid=#{qid}
+	</delete>
+	
+	<update id = "changeId" parameterType="int">
+		update item set qid = #{1} where qid=#{0}
+	</update>
+	
+	<insert id = "addItem" parameterType = "item">
+		insert into item (qid, question, option_a, option_b,option_c,option_d,answer, type) values (#{qid}, #{question}, #{option_a}, #{option_b}, #{option_c}, #{option_d}, #{answer}, #{type})
+	</insert>
+	
+</mapper>

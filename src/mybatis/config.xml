@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- 声明多个实体的别名 -->
+    <typeAliases>
+        <typeAlias alias="item" type="com.oracle.tna.domain.Item" />
+        <typeAlias alias="user" type="com.oracle.tna.domain.User" />
+        <typeAlias alias="score" type="com.oracle.tna.domain.Score" />
+        <typeAlias alias="scoreuser" type="com.oracle.tna.admin.controller.ScoreUser"/>
+    </typeAliases>
+
+	<!-- default 和 id 对应的上就ok -->
+    <environments default="simple">
+        <environment id="simple">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+            <!-- 数据库的地址 -->
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/tna" />
+                <property name="username" value="root" />
+                <property name="password" value="root" />
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 映射 -->
+    <mappers>
+        <mapper resource="com/oracle/tna/dao/UserMapper.xml" />
+        <mapper resource="com/oracle/tna/dao/ItemMapper.xml" />
+        <mapper resource="com/oracle/tna/dao/ScoreMapper.xml" />
+    </mappers>
+</configuration>

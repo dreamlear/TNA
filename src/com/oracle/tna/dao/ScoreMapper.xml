@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3.dtd">
+<mapper namespace="com.oracle.tna.dao.ScoreMapper">
+
+	<select id="selectByuid" parameterType="int" resultType="score">
+		select * from score where USER_UID = #{uid};
+	</select>
+	
+	<insert id="insert" parameterType="score" >
+		insert into score (date, score, answer, s_answer, USER_UID) values (#{date}, #{score}, #{answer}, #{s_answer}, #{USER_UID})
+		
+	</insert>
+	
+		<select id = "selectAll" resultType = "scoreuser">
+		select * from scoreuser
+	</select>
+	
+	<select id = "getRecordNum" resultType = "int">
+		select count(*) from score
+	</select>
+	
+	<select id = "getAvgScore" resultType = "float">
+		select avg(score) from score
+	</select>
+	
+</mapper>
